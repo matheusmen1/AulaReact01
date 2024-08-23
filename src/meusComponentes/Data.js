@@ -9,7 +9,13 @@ export default class Data extends Component{
                         dataAtual : new Date().toLocaleString()
                      }
     }       
-
+    pagaDatade(timeZone){
+        const dataAtual = new Data();
+        let timeZoneFromDB = parseInt(timeZone);
+        let diferencaTempo = timeZoneFromDB * 60 + dataAtual.getTimezoneOffset();
+        let milisegundos = parseInt(dataAtual.getTime() + (diferencaTempo * 60 + 1000));
+        const data = new Date(milisegundos);
+    }
     componentDidMount(){
         console.log("O componente foi montado");
         //Não é permitido atualizar o estado do componente de forma direta
@@ -22,7 +28,8 @@ export default class Data extends Component{
         console.log("O componente foi atualizado");
         setTimeout(()=>{
             this.setState({
-                dataAtual : new Date().toLocaleString()
+                //dataAtual : new Date().toLocaleString()
+                dataAtual: this.pagaDatade(this.props.timeZone).toLocaleString()
             });
             },1000);
     }

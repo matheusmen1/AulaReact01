@@ -28,8 +28,8 @@ export default class Data extends Component{
         console.log("O componente foi atualizado");
         setTimeout(()=>{
             this.setState({
-                //dataAtual : new Date().toLocaleString()
-                dataAtual: this.pagaDatade(this.props.timeZone).toLocaleString()
+                dataAtual : new Date().toLocaleString()
+                //dataAtual: this.pagaDatade(this.props.timeZone).toLocaleString()
             });
             },1000);
     }
